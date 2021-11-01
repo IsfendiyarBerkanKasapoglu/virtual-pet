@@ -40,7 +40,21 @@ function Pet(name) {
             this.fitness = Maximum_fitness;
           }
       }
-      
+      Pet.prototype.checkUp = function() {
+        if (this.fitness <= 3 && this.hunger >= 5) {
+            return 'I am hungry AND I need a walk'
+            }
+          if (this.fitness <= 3) {
+              return 'I need a walk';
+          }
+          if (this.hunger >= 5) {
+              return 'I am hungry';
+          }
+          if (!this.isAlive) {
+            throw new Error('Your pet is no longer alive :(');
+          }
+          else return "I feel great!";
+      };
 };
 const pet = new Pet("Fido");
 const rex = new Pet("Rex");

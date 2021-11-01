@@ -50,4 +50,27 @@ describe('walk', () => {
       expect(() => pet.walk()).toThrow('Your pet is no longer alive :(');
     });
   });
-  
+  describe('checkup tests', () => {
+    it('if the pet fitness level is below 3 or less return a string', () => {
+        const pet = new Pet('fido');
+        pet.fitness = 3;
+        expect(pet.checkUp(2)).toBe('I need a walk');
+    });
+    it('if the pets hunger is 5 or more', () => {
+        const pet = new Pet('fido');
+        pet.hunger = 6;
+        expect(pet.checkUp(6)).toBe('I am hungry');
+    });
+    it('if the pets fitness is 3 or less and if the pets hunger is 5 or more returns a string', () => {
+        const pet = new Pet('fido');
+        pet.fitness = 3;
+        pet.hunger = 6;
+        expect(pet.checkUp()).toBe('I am hungry AND I need a walk');
+    });
+    it('if pet fitness above 3 and hunger level is less then 5 return a string', () => {
+        const pet = new Pet('fido');
+        pet.fitness = 4;
+        pet.hunger = 4;
+        expect(pet.checkUp()).toBe('I feel great!');
+    });
+})
